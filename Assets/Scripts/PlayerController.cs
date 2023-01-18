@@ -8,6 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class PlayerController : MonoBehaviour
 {
     //Objects & Components:
+    public static PlayerController main;   //Singleton instance of this playercontroller in scene
     public Transform leftHand;             //Transform for left hand controller
     public Transform rightHand;            //Transform for right hand controller
     internal Transform XROrigin;           //Top-level object in VR controller hierarchy
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour
     //RUNTIME METHODS:
     private void Awake()
     {
+        //Initialize:
+        if (main == null) { main = this; } else { Destroy(gameObject); } //Singleton-ize this player object
+
         //Get objects & components:
         XROrigin = GetComponentInChildren<XROrigin>().transform; if (XROrigin == null) Debug.LogError(name + " needs an XR Origin (is XR set up on this player?)"); //Get XR origin and post warning if it is missing
         if (!XROrigin.TryGetComponent(out rb)) Debug.LogError(name + " is missing rigidBody component (should be on child named PlayerBody)");                      //Get rigidbody component and post warning if it cannot be found

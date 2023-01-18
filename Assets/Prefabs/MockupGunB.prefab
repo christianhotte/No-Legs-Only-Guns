@@ -715,6 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponVelocityMem: 10
   forceMultiplier: 1
+  doDebugLogs: 0
 --- !u!1 &4524432370321508802
 GameObject:
   m_ObjectHideFlags: 0
