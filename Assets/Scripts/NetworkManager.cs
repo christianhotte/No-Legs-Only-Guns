@@ -7,11 +7,11 @@ using Photon.Realtime;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     //Objects & Components:
-    private GameObject networkPlayerInstance; //Instance of this player in the photon network
+    public GameObject networkPlayerInstance; //Instance of this player in the photon network
 
     //Settings:
     [Header("General Settings:")]
-    [SerializeField, Min(0.5f), Tooltip("Time to wait on connection failure to retry")]   private float joinRetryDelay;
+    [SerializeField, Min(0.5f), Tooltip("Time to wait on connection failure to retry")] private float joinRetryDelay;
 
     //Runtime Variables:
     private bool connectedToServer = false; //Whether or not this player is currently connected to the server
