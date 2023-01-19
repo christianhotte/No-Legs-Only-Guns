@@ -23,7 +23,11 @@ public class NetworkPlayer : MonoBehaviour
         //Get objects & components:
         photonView = GetComponent<PhotonView>(); //Get photon view component from this object
 
-        //
+        //Hide self:
+        if (photonView.IsMine) //This network player belongs to real player in this scene
+        {
+            foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = false; //Disable all renderers in own network player
+        }
     }
     private void Update()
     {
